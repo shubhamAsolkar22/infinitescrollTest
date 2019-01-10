@@ -1,0 +1,6 @@
+<p>This is the infy view.</p>
+<!-- <div ng-controller="MainCtrl as $ctrl"> -->
+    <button id="reset" class="button" ng-click="$ctrl.reset()">Reset</button>
+    <span> &nbsp; &nbsp; First page: {{ $ctrl.firstPage }} &nbsp; &nbsp; Last page: {{ $ctrl.lastPage }}  &nbsp; &nbsp; data.length: {{ data.length }} </span>
+    <div ui-grid="$ctrl.gridOptions" class="grid" ui-grid-infinite-scroll></div>
+  <!-- </div> -->
