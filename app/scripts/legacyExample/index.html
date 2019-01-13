@@ -1,0 +1,70 @@
+<html>
+<style>
+    .gridStyle {
+        border: 1px solid rgb(212, 212, 212);
+        width: 400px;
+        height: 200px;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/ng-grid-2.0.14.debug.js"></script>
+<link rel="stylesheet" href="/ng-grid.min.css">
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.css"/> -->
+
+<body ng-app="ngGridApp">
+    <div ng-controller="NgGridController">
+        <!-- <div class="gridStyle" ng-grid="gridOptions"></div> -->
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+    </div>
+</body>
+
+<script>
+    var app = angular.module('ngGridApp', ['ngGrid', 'ngGrid.directives']);
+
+    app.controller('NgGridController',
+        function ($scope) {
+
+            $scope.pagingOptions = {
+                pageSizes: [1, 2, 3],
+                pageSize: 4,
+                totalServerItems: 0,
+                currentPage: 1
+            };
+            $scope.data = [
+                { Name: 'Prakash', Age: 26, Number: 9800775544 },
+                { Name: 'Sushil', Age: 27, Number: 9800774433 },
+                { Name: 'Sagar', Age: 25, Number: 9800777787 },
+                { Name: 'Prakash', Age: 26, Number: 9800775544 },
+                { Name: 'Sushil', Age: 27, Number: 9800774433 },
+                { Name: 'Sagar', Age: 25, Number: 9800777787 },
+                { Name: 'Prakash', Age: 26, Number: 9800775544 },
+                { Name: 'Sushil', Age: 27, Number: 9800774433 },
+                { Name: 'Sagar', Age: 25, Number: 9800777787 },
+                { Name: 'Prakash', Age: 26, Number: 9800775544 },
+                { Name: 'Sushil', Age: 27, Number: 9800774433 },
+                { Name: 'Sagar', Age: 25, Number: 9800777787 }
+            ];
+            // console.log($scope.gridOptions.ngGrid.$viewport[0])
+            var c =0;
+            $scope.$on('ngGridEventScroll', function (e) {
+                var ngGridView = $scope.gridOptions.ngGrid.$viewport[0];
+
+                var ngGridCanvas = $scope.gridOptions.ngGrid.$canvas[0];
+
+               /*  if (ngGridView.offsetHeight + ngGridView.scrollTop > ngGridCanvas.scrollHeight) {
+                    $scope.scrollOver = console.log(ngGridView.offsetHeight + ngGridView.scrollTop, ngGridCanvas.scrollHeight);
+                } */
+                $scope.data.push( { Name: 'Shubham', Age: 25, Number: 111111 });
+                console.log(c++);
+            });
+
+            $scope.gridOptions = {
+                data: 'data'
+            };
+
+        }
+    );
+</script>
+
+</html>
